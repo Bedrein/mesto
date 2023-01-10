@@ -1,8 +1,15 @@
 .header {
-	margin: 45px 0 0;
-	padding: 0 200px 40px;
+	margin: 45px 200px 40px;
+	padding: 0 0 40px;
 	max-width: 880px;
-	border-bottom-width: 2px; /* Толщина линии внизу */
-    border-bottom-style: solid; /* Стиль линии внизу */
-    border-bottom-color: white; /* Цвет линии внизу */
+	border-bottom: 1px solid #545454;
+}
+
+@media screen and (max-width: 768px) {
+  .header {
+    max-width: 100%;
+		padding-left: 27px;
+		padding-bottom: 30px;
+		margin: 28px 0 42px;
+  }
 }
