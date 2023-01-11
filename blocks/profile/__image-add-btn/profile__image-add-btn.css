@@ -1,3 +1,14 @@
 .profile__image-add-btn {
-	
+
 }
+
+@media screen and (max-width: 1100px) {
+  .profile__image-add-btn {
+		width: 100%; /* Ширина изображений */
+	height: 50px;
+		object-fit: cover; /* Вписываем фотографию в область */
+
+		
+  }
+}
+

@@ -1,3 +1,16 @@
 .profile__position {
-	
+	margin: 0;
+	color: #fff;
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 22px;
+}
+
+@media screen and (max-width: 1100px) {
+  .profile__position {
+    padding-bottom: 38px;
+		font-size: 14px;
+		line-height: 17px;
+		text-align: center;
+  }
 }
