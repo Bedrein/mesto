@@ -1,5 +1,5 @@
 .profile__edit-btn {
-	margin: 0 0 0 18px;
+	margin: 37px 0 0 18px;
 	padding: 0;
 	height: 24px;
 	background-color: black;
@@ -10,8 +10,7 @@
 
 @media screen and (max-width: 1100px) {
   .profile__edit-btn {
-
-    padding-left: 10px;
-
+		margin-top: 8px;
+		margin-left: 10px;
   }
 }
