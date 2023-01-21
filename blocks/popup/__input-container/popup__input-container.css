@@ -1,9 +1,18 @@
 .popup__input-container {
+	margin: 0;
+	padding-top: 0;
 	padding-bottom: 48px;
+	padding-left: 13px;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
 	align-items: center;
 	border: none;
 	gap: 30px;
+}
+
+@media screen and (max-width: 550px) {
+  .popup__input-container {
+    padding-bottom: 45px;
+  }
 }

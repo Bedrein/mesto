@@ -4,6 +4,10 @@
 	border: 1px solid #fff;
 }
 
+.profile__image-edit-btn:hover{
+	opacity: 0.6;
+}
+
 @media screen and (max-width: 1100px) {
   .profile__image-edit-btn {
 		width: 7.5px;
