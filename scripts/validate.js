@@ -7,25 +7,25 @@ const formValidationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const disableSubmit = (evt) => {
-  evt.preventDefault();
-};
-
-const toggleButton = (form, config) => {
+const buttonFormDisable = (form, config) => {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
-
   if (!isFormValid) {
-    buttonSubmit.setAttribute("disabled", "disabled");
+    buttonSubmit.setAttribute("disabled", "true");
     buttonSubmit.classList.add(config.inactiveButtonClass);
-  } else {
-    buttonSubmit.removeAttribute("disabled", "disabled");
+  }
+};
+
+const buttonFormEnable = (form, config) => {
+  const buttonSubmit = form.querySelector(config.submitButtonSelector);
+  const isFormValid = form.checkValidity();
+  if (isFormValid) {
+    buttonSubmit.removeAttribute("disabled", "true");
     buttonSubmit.classList.remove(config.inactiveButtonClass);
   }
 };
 
-const handleFormInput = (evt, config) => {
-  const input = evt.target;
+const handleFormInput = (input, config) => {
   const inputError = document.querySelector(`#${input.id}-error`);
   if (input.checkValidity()) {
     input.classList.remove(config.inputErrorClass);
@@ -39,19 +39,17 @@ const handleFormInput = (evt, config) => {
 const addInputListeners = (form, config) => {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
   inputList.forEach((input) => {
-    input.addEventListener("input", (evt) => {
-      handleFormInput(evt, config);
+    input.addEventListener("input", () => {
+      handleFormInput(input, config);
+      buttonFormDisable(form, config);
+      buttonFormEnable(form, config);
     });
   });
 };
 
 const enableFormValidation = (form, config) => {
-  form.addEventListener("submit", disableSubmit);
-  form.addEventListener("input", () => {
-    toggleButton(form, config);
-  });
-  toggleButton(form, config);
   addInputListeners(form, config);
+  buttonFormDisable(form, config);
 };
 
 const enableValidation = (config) => {
@@ -60,3 +58,5 @@ const enableValidation = (config) => {
     enableFormValidation(form, config);
   });
 };
+
+enableValidation(formValidationConfig);

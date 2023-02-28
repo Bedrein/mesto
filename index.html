@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <meta charset="UTF-8" >
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" >
-    <link rel="stylesheet" href="./pages/index.css" >
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <script defer src="./scripts/cards.js"></script>
+    <script defer src="./scripts/validate.js"></script>
+    <script defer src="./scripts/index.js"></script>
     <title>Mesto</title>
   </head>
   <body class="page">
     <!--------------Header-------------------------->
     <header class="header">
-      <img src="./images/logo.svg" alt="Место Россия" class="header__logo" >
+      <img src="./images/logo.svg" alt="Место Россия" class="header__logo" />
     </header>
     <main class="content">
       <!--------------Profile-------------------------->
       <section class="profile">
         <div class="profile__container">
-          <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar" >
+          <img src="./images/avatar.jpg" alt="Аватар" class="profile__avatar" />
           <div class="profile__info">
             <div class="profile__text">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -26,15 +29,15 @@
               <img
                 src="./images/edit-button.svg"
                 alt="Карандаш"
-                class="profile__image-edit-btn" >
+                class="profile__image-edit-btn" />
             </button>
           </div>
         </div>
         <button type="button" class="profile__add-btn">
           <img
             src="./images/add-button.svg"
-            alt="Карандаш"
-            class="profile__image-add-btn" >
+            alt="Плюс"
+            class="profile__image-add-btn" />
         </button>
       </section>
       <!--------------Elements-------------------------->
@@ -46,12 +49,12 @@
               <img
                 src="./images/karachaevsk.jpg"
                 alt="Пейзаж"
-                class="element__image element__image_type_image" >
+                class="element__image element__image_type_image" />
               <button type="button" class="element__button-delete">
                 <img
                   src="./images/trash-icon.svg"
                   alt="Урна"
-                  class="element__icon-trach" >
+                  class="element__icon-trach" />
               </button>
               <div class="description">
                 <h2 class="element__text">Карачаево-Черкесия</h2>
@@ -59,7 +62,7 @@
                   <img
                     src="./images/heart.svg"
                     alt="Сердце"
-                    class="element__icon-heart" >
+                    class="element__icon-heart" />
                 </button>
               </div>
             </li>
@@ -78,7 +81,7 @@
           <img
             src="./images/close_icon.svg"
             alt="Крест для закрытия"
-            class="popup__icon-close" >
+            class="popup__icon-close" />
         </button>
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form
@@ -97,7 +100,7 @@
               value="Жак-Ив Кусто"
               required
               minlength="2"
-              maxlength="40" >
+              maxlength="40" />
             <span id="name-input-error" class="popup__error-input"></span>
             <input
               id="job-input"
@@ -108,7 +111,7 @@
               value="Исследователь океана"
               required
               minlength="2"
-              maxlength="200" >
+              maxlength="200" />
             <span id="job-input-error" class="popup__error-input"></span>
           </fieldset>
           <fieldset class="popup__button-container">
@@ -126,7 +129,7 @@
           <img
             src="./images/close_icon.svg"
             alt="Крест для закрытия"
-            class="popup__icon-close" >
+            class="popup__icon-close" />
         </button>
         <h2 class="popup__heading">Новое место</h2>
         <form
@@ -144,7 +147,7 @@
               name="title"
               required
               minlength="2"
-              maxlength="30" >
+              maxlength="30" />
             <span id="title-input-error" class="popup__error-input"></span>
             <input
               id="url-input"
@@ -152,7 +155,7 @@
               class="popup__input popup__input_link-image"
               placeholder="Ссылка на картинку"
               name="link"
-              required >
+              required />
             <span id="url-input-error" class="popup__error-input"></span>
           </fieldset>
           <fieldset class="popup__button-container">
@@ -172,16 +175,13 @@
           <img
             src="./images/close_icon.svg"
             alt="Крест для закрытия"
-            class="popup__icon-close" >
+            class="popup__icon-close" />
         </button>
         <div class="popup__figure">
-          <img src="images/karachaevsk.jpg" alt="Пейзаж" class="popup__image" >
+          <img src="images/karachaevsk.jpg" alt="Пейзаж" class="popup__image" />
           <h2 class="popup__title-image">Ельбрус</h2>
         </div>
       </div>
     </section>
-    <script src="./scripts/cards.js"></script>
-    <script src="./scripts/validate.js"></script>
-    <script src="./scripts/index.js"></script>
   </body>
 </html>
