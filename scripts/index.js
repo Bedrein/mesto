@@ -101,7 +101,6 @@ const createCard = (name, link) => {
     popupImage.alt = evt.target.alt;
     popupTitleImage.textContent = evt.target.alt;
     openPopup(popupTypeImage);
-    initClosePopupByOverlayClick(popupTypeImage);
   });
   return newCard;
 };
@@ -123,7 +122,6 @@ btnEditProfile.addEventListener("click", () => {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
   openPopup(popupTypeEditProfile);
-  initClosePopupByOverlayClick(popupTypeEditProfile);
 });
 
 btnClosePopupEditProfile.addEventListener("click", () => {
@@ -135,7 +133,6 @@ formPopupEditProfile.addEventListener("submit", handleFormSubmitEditProfile);
 // Добавление карточки
 btnAddCard.addEventListener("click", () => {
   openPopup(popupTypeAddCard);
-  initClosePopupByOverlayClick(popupTypeAddCard);
 });
 
 btnClosePopupCard.addEventListener("click", () => {
@@ -150,5 +147,9 @@ formPopupAddCard.addEventListener("submit", (evt) => {
   renderCard(itemLiistWrapper, nameInput, linkInput);
   formPopupAddCard.reset();
   closePopup(popupTypeAddCard);
-  buttonFormDisable(formPopupAddCard, formValidationConfig);
+  toggleButton(formPopupAddCard, formValidationConfig);
 });
+
+initClosePopupByOverlayClick(popupTypeImage);
+initClosePopupByOverlayClick(popupTypeEditProfile);
+initClosePopupByOverlayClick(popupTypeAddCard);

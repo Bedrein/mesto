@@ -7,21 +7,21 @@ const formValidationConfig = {
   errorClass: "popup__error_visible",
 };
 
-const buttonFormDisable = (form, config) => {
+const disableSubmitButton = (buttonSubmit, config) => {
+  buttonSubmit.setAttribute("disabled", "true");
+  buttonSubmit.classList.add(config.inactiveButtonClass);
+};
+const enableSubmitButton = (buttonSubmit, config) => {
+  buttonSubmit.removeAttribute("disabled");
+  buttonSubmit.classList.remove(config.inactiveButtonClass);
+};
+const toggleButton = (form, config) => {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
   if (!isFormValid) {
-    buttonSubmit.setAttribute("disabled", "true");
-    buttonSubmit.classList.add(config.inactiveButtonClass);
-  }
-};
-
-const buttonFormEnable = (form, config) => {
-  const buttonSubmit = form.querySelector(config.submitButtonSelector);
-  const isFormValid = form.checkValidity();
-  if (isFormValid) {
-    buttonSubmit.removeAttribute("disabled", "true");
-    buttonSubmit.classList.remove(config.inactiveButtonClass);
+    disableSubmitButton(buttonSubmit, config);
+  } else {
+    enableSubmitButton(buttonSubmit, config);
   }
 };
 
@@ -41,15 +41,15 @@ const addInputListeners = (form, config) => {
   inputList.forEach((input) => {
     input.addEventListener("input", () => {
       handleFormInput(input, config);
-      buttonFormDisable(form, config);
-      buttonFormEnable(form, config);
+      toggleButton(form, config);
+      toggleButton(form, config);
     });
   });
 };
 
 const enableFormValidation = (form, config) => {
   addInputListeners(form, config);
-  buttonFormDisable(form, config);
+  toggleButton(form, config);
 };
 
 const enableValidation = (config) => {
