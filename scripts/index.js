@@ -120,6 +120,7 @@ formPopupAddCard.addEventListener('submit', (evt) => {
   //Сreate card
   itemLiistWrapper.prepend(createCard(objectInput));
   closePopup(popupTypeAddCard);
+  formPopupAddCard.reset();
   formValidatorAddCard.toggleButton();
 });
 
