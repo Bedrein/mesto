@@ -119,8 +119,8 @@ formPopupAddCard.addEventListener('submit', (evt) => {
 
   //Сreate card
   itemLiistWrapper.prepend(createCard(objectInput));
-  closePopup(popupTypeAddCard);
   formPopupAddCard.reset();
+  closePopup(popupTypeAddCard);
   formValidatorAddCard.toggleButton();
 });
 
