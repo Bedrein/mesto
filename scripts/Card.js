@@ -4,20 +4,19 @@ class Card {
     this._link = link;
     this._template = template;
     this._handleOpenPopupImage = handleOpenPopupImage;
+    this._hai = document.querySelector('.element__text');
   }
 
   _deleteCard = (evt) => {
     evt.target.closest('.element__item').remove();
   };
 
-  _likeCard = (evt) => {
-    evt.target
-      .closest('.element__button-heart')
-      .classList.toggle('element__button-heart_active');
+  _likeCard = () => {
+    this._btnHeartCard.classList.toggle('element__button-heart_active');
   };
 
   // Добавление карточки
-  _createCard = () => {
+  createCard = () => {
     this._newCard = this._template.content.cloneNode(true);
     this._newCardName = this._newCard.querySelector('.element__text');
     this._newCardImage = this._newCard.querySelector(
@@ -40,10 +39,6 @@ class Card {
     //Open PopupImage
     this._newCardImage.addEventListener('click', this._handleOpenPopupImage);
   }
-
-  renderCard = (wrap) => {
-    wrap.prepend(this._createCard(this.name, this.link));
-  };
 }
 
 export default Card;

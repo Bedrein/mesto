@@ -74,21 +74,31 @@ const handleFormSubmitEditProfile = (evt) => {
   closePopup(popupTypeEditProfile);
 };
 
+const createCard = (item) => {
+  const card = new Card(
+    item.name,
+    item.link,
+    cardItemTemplate,
+    handleOpenPopupImage
+  );
+  const cardElement = card.createCard();
+  return cardElement;
+};
+
 //-------------------Event---------------------------------------
 
-// Закрыть PopupImage
-btnClosePopupImage.addEventListener('click', () => {
-  closePopup(popupTypeImage);
+// находим все крестики проекта по универсальному селектору
+const closeButtons = document.querySelectorAll('.popup__button-close');
+
+closeButtons.forEach((button) => {
+  const popup = button.closest('.popup');
+  button.addEventListener('click', () => closePopup(popup));
 });
 
 btnEditProfile.addEventListener('click', () => {
   nameInput.value = name.textContent;
   jobInput.value = job.textContent;
   openPopup(popupTypeEditProfile);
-});
-
-btnClosePopupEditProfile.addEventListener('click', () => {
-  closePopup(popupTypeEditProfile);
 });
 
 formPopupEditProfile.addEventListener('submit', handleFormSubmitEditProfile);
@@ -98,40 +108,24 @@ btnAddCard.addEventListener('click', () => {
   openPopup(popupTypeAddCard);
 });
 
-btnClosePopupCard.addEventListener('click', () => {
-  closePopup(popupTypeAddCard);
-});
-
 //форма для addElement
 formPopupAddCard.addEventListener('submit', (evt) => {
   evt.preventDefault();
-  const nameInput = titleInput.value;
-  const linkInput = linkInputImage.value;
-
+  const objectInput = {
+    name: titleInput.value,
+    link: linkInputImage.value,
+  };
   //----------------Code---------------------------------------
 
   //Сreate card
-  const card = new Card(
-    nameInput,
-    linkInput,
-    cardItemTemplate,
-    handleOpenPopupImage
-  );
-  card.renderCard(itemLiistWrapper);
-  formPopupAddCard.reset();
+  itemLiistWrapper.prepend(createCard(objectInput));
   closePopup(popupTypeAddCard);
   formValidatorAddCard.toggleButton();
 });
 
 //Create Card from data
 initialCards.forEach((item) => {
-  const card = new Card(
-    item.name,
-    item.link,
-    cardItemTemplate,
-    handleOpenPopupImage
-  );
-  card.renderCard(itemLiistWrapper);
+  itemLiistWrapper.prepend(createCard(item));
 });
 
 //Create validator for form
