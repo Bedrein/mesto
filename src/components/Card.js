@@ -1,10 +1,9 @@
 class Card {
-  constructor(name, link, template, handleOpenPopupImage) {
+  constructor(name, link, template, handleCardClick) {
     this._name = name;
     this._link = link;
     this._template = template;
-    this._handleOpenPopupImage = handleOpenPopupImage;
-    this._hai = document.querySelector('.element__text');
+    this.handleCardClick = handleCardClick;
   }
 
   _deleteCard = (evt) => {
@@ -37,7 +36,7 @@ class Card {
     //Лайк карточки
     this._btnHeartCard.addEventListener('click', this._likeCard);
     //Open PopupImage
-    this._newCardImage.addEventListener('click', this._handleOpenPopupImage);
+    this._newCardImage.addEventListener('click', this.handleCardClick);
   }
 }
 
