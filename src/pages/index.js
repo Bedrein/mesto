@@ -32,9 +32,13 @@ const popupAddCardForm = new PopupWithForm(popupTypeAddCard, formPopupAddCard, {
         alt: title,
       })
     );
+    formPopupAddCard.reset();
+    formValidatorAddCard.resetButton();
   },
 });
+
 popupAddCardForm.setEventListeners();
+
 //-------------popupTypeEditProfile FORM-------------------------------
 
 const userInfo = new UserInfo({ name: '.profile__name', job: '.profile__job' });
@@ -51,6 +55,7 @@ popupEditProfileForm.setEventListeners();
 //----------------Create card--------------------------------------
 
 const popupWithImage = new PopupWithImage(popupTypeImage);
+popupWithImage.setEventListeners();
 
 const createCard = (item) => {
   const card = new Card(item.name, item.link, cardItemTemplate, () => {
@@ -65,7 +70,6 @@ const createCard = (item) => {
 
 const section = new Section(
   {
-    items: initialCards,
     renderer: (item) => {
       const cardElement = createCard(item);
       section.addItem(cardElement);
@@ -73,16 +77,7 @@ const section = new Section(
   },
   itemLiistWrapper
 );
-section.renderItems();
-//--------------------Events for popup---------------------------------
-const popupImages = new Popup(popupTypeImage);
-popupImages.setEventListeners();
-
-const popupEditProfile = new Popup(popupTypeEditProfile);
-popupEditProfile.setEventListeners();
-
-const popupAddCard = new Popup(popupTypeAddCard);
-popupAddCard.setEventListeners();
+section.renderItems(initialCards);
 
 //-----------------Validator-------------------------
 const formValidatorEditProfile = new FormValidator(
@@ -100,12 +95,11 @@ formValidatorAddCard.enableValidation();
 //-------------------Events-open-popup-------------------------------------
 // Событие открытия popupAddCard
 btnAddCard.addEventListener('click', () => {
-  popupAddCardForm.close();
-  popupAddCard.open();
+  popupAddCardForm.open();
 });
 
 // Событие открытия popupEditProfile
 btnEditProfile.addEventListener('click', () => {
-  popupEditProfile.open();
-  userInfo.getUserInfo();
+  popupEditProfileForm.open();
+  popupEditProfileForm.showInput(userInfo.getUserInfo());
 });

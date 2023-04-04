@@ -26,6 +26,10 @@ class FormValidator {
     }
   };
 
+  resetButton = () => {
+    this._disableSubmitButton();
+  };
+
   _handleFormInput = (input) => {
     this._inputError = document.querySelector(`#${input.id}-error`);
     if (input.checkValidity()) {
