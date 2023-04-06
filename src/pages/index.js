@@ -32,11 +32,8 @@ const popupAddCardForm = new PopupWithForm(popupTypeAddCard, formPopupAddCard, {
         alt: title,
       })
     );
-    formPopupAddCard.reset();
-    formValidatorAddCard.resetButton();
   },
 });
-
 popupAddCardForm.setEventListeners();
 
 //-------------popupTypeEditProfile FORM-------------------------------
@@ -95,11 +92,12 @@ formValidatorAddCard.enableValidation();
 //-------------------Events-open-popup-------------------------------------
 // Событие открытия popupAddCard
 btnAddCard.addEventListener('click', () => {
+  formValidatorAddCard.resetButton();
   popupAddCardForm.open();
 });
 
 // Событие открытия popupEditProfile
 btnEditProfile.addEventListener('click', () => {
+  popupEditProfileForm.setInputValues(userInfo.getUserInfo());
   popupEditProfileForm.open();
-  popupEditProfileForm.showInput(userInfo.getUserInfo());
 });

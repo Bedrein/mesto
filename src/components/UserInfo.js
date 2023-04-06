@@ -7,16 +7,16 @@ export default class UserInfo {
   }
 
   //Возвращает объект с данными пользователя.
-  getUserInfo = () => {
+  getUserInfo() {
     return {
       name: this._name.textContent,
       job: this._job.textContent,
     };
-  };
+  }
 
   //принимает новые данные пользователя и добавляет их на страницу
   setUserInfo = (data) => {
     this._name.textContent = data.name;
-    this._job.textContent = data.aboutMe;
+    this._job.textContent = data.job;
   };
 }
