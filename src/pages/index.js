@@ -3,7 +3,6 @@ import './index.css'; // добавьте импорт главного файл
 import Card from './../components/Card.js';
 import FormValidator from '../components/FormValidator.js';
 import Section from '../components/Section.js';
-import Popup from '../components/Popup.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 
 import {
@@ -23,7 +22,7 @@ import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
 //------------popupTypeAddCard FORM----------------------------------
-const popupAddCardForm = new PopupWithForm(popupTypeAddCard, formPopupAddCard, {
+const popupAddCardForm = new PopupWithForm(popupTypeAddCard, {
   handleSabmitForm: ({ title, link }) => {
     section.addItem(
       createCard({
@@ -39,15 +38,11 @@ popupAddCardForm.setEventListeners();
 //-------------popupTypeEditProfile FORM-------------------------------
 
 const userInfo = new UserInfo({ name: '.profile__name', job: '.profile__job' });
-const popupEditProfileForm = new PopupWithForm(
-  popupTypeEditProfile,
-  formPopupEditProfile,
-  {
-    handleSabmitForm: (data) => {
-      userInfo.setUserInfo(data);
-    },
-  }
-);
+const popupEditProfileForm = new PopupWithForm(popupTypeEditProfile, {
+  handleSabmitForm: (data) => {
+    userInfo.setUserInfo(data);
+  },
+});
 popupEditProfileForm.setEventListeners();
 //----------------Create card--------------------------------------
 
