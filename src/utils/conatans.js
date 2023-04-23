@@ -12,7 +12,7 @@ const profile = page.querySelector('.profile');
 const popupTypeEditProfile = page.querySelector('.popup_type_edit-profile');
 
 const btnEditProfile = profile.querySelector('.profile__edit-btn');
-const btnEditAvatar = profile.querySelector('.profile__avatar_edit-button');
+const btnEditAvatar = profile.querySelector('.profile__avatar-edit-button');
 const formPopupEditProfile = popupTypeEditProfile.querySelector(
   '.popup__form_type_edit-profile'
 );
