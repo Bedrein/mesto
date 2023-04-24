@@ -23,7 +23,7 @@ class Card {
   }
 
   //--------------------------------------------
-  cardLike() {
+  _likeCard() {
     return this._likes.some((item) => item._id === this._user._id);
   }
 
@@ -34,7 +34,7 @@ class Card {
     } else {
       this._likeNumber.textContent = this._likes.length;
     }
-    if (this.cardLike()) {
+    if (this._likeCard()) {
       this._btnHeartCard.classList.add('element__button-heart_active');
     } else {
       this._btnHeartCard.classList.remove('element__button-heart_active');
@@ -42,7 +42,7 @@ class Card {
   }
 
   clickLike() {
-    if (this.cardLike()) {
+    if (this._likeCard()) {
       this._handleDeleteLikeClick(this._id);
     } else {
       this._handleLikeClick(this._id);
@@ -53,7 +53,9 @@ class Card {
 
   // Добавление карточки
   createCard = () => {
-    this._newCard = this._template.content.cloneNode(true);
+    this._newCard = this._template.content
+      .querySelector('.element__item')
+      .cloneNode(true);
     this._newCardName = this._newCard.querySelector('.element__text');
     this._newCardImage = this._newCard.querySelector(
       '.element__image_type_image'
@@ -73,14 +75,14 @@ class Card {
   //--------------------------------------------------------------
 
   deleteCard = () => {
-    evt.target.closest('.element__item').remove();
+    this._newCard.remove();
+    this._newCard = null;
   };
 
   _setEventListeners() {
     // Удаление карточки
-    this._btnTrash.addEventListener('click', (evt) => {
-      this._handleDeleteCard = evt.target.closest('.element__item');
-      this._openPopupConfirm(this._handleDeleteCard, this._id);
+    this._btnTrash.addEventListener('click', () => {
+      this._openPopupConfirm(this, this._id);
     });
 
     //Лайк карточки

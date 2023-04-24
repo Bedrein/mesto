@@ -43,6 +43,7 @@ const popupAddCardForm = new PopupWithForm(popupTypeAddCard, {
       .postNewCard({ title, link })
       .then((res) => {
         section.addItem(createCard(res));
+        popupAddCardForm.close();
       })
       .catch((err) => {
         console.log(err);
@@ -80,6 +81,7 @@ const popupEditProfileForm = new PopupWithForm(popupTypeEditProfile, {
       .patchProfileInfo(data)
       .then((res) => {
         userInfo.setUserInfo(res);
+        popupEditProfileForm.close();
       })
       .catch((err) => {
         console.log(err);
@@ -152,12 +154,12 @@ const popupWithConfirm = new PopupWithConfirm(popup_type_confirm, {
     api
       .deleteCard(id)
       .then(() => {
+        card.deleteCard();
         popupWithConfirm.close();
       })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => card.remove());
+      });
   },
 });
 
@@ -202,6 +204,7 @@ const popupEditAvatar = new PopupWithForm(popupTypeEditAvatar, {
       .patchEditAvatar(data.link)
       .then((res) => {
         userInfo.setUserAvatar(res.avatar);
+        popupEditAvatar.close();
       })
       .catch((err) => {
         console.log(err);

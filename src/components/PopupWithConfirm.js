@@ -20,7 +20,6 @@ export default class PopupWithConfirm extends Popup {
 
     this._buttonConfirm.addEventListener('click', () => {
       this._handleDeleteCard(this._currentCardId, this._currentCallback);
-      this.close();
     });
   };
 }
